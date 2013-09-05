@@ -20,6 +20,7 @@ class Fastly
   require 'fastly/origin'
   require 'fastly/service'
   require 'fastly/settings'
+  require 'fastly/stream'
   require 'fastly/syslog'
   require 'fastly/user'
   require 'fastly/vcl'
@@ -88,7 +89,7 @@ class Fastly
   end
 
 
-  [User, Customer, Backend, Director, Domain, Healthcheck, Match, Origin, Service, Syslog, VCL, Version].each do |klass|   
+  [User, Customer, Backend, Director, Domain, Healthcheck, Match, Origin, Service, Stream, Syslog, VCL, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
